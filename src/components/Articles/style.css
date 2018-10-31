@@ -1,0 +1,13 @@
+.article {
+  margin-bottom: 20px;
+}
+.article h2 {
+  font-weight: 700;
+}
+.article .content {
+  color: #333;
+  font-size: 15px;
+}
+.Pagination {
+  float: right;
+}

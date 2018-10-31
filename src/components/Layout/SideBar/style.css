@@ -1,0 +1,50 @@
+.Sidebar .tag {
+  margin-bottom: 5px;
+}
+.Sidebar .card {
+  margin-bottom: 20px;
+}
+.Sidebar .card-title {
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+.Sidebar .authorImg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.Sidebar .authorImg img {
+  margin-top: -80px;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  transition: transform 0.8s ease-in-out;
+}
+.Sidebar .authorImg img:hover {
+  transform: rotate(360deg);
+}
+.Sidebar .icon-git-wrp {
+  display: flex;
+  justify-content: start;
+}
+.Sidebar .icon-git {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ececec;
+  font-size: 2rem;
+  margin: 5px;
+}
+.Sidebar .icon-git:hover {
+  color: #ececec;
+  background-color: #444;
+}
+.Sidebar .icon-git a:hover {
+  color: #fff;
+}
+.Sidebar .icon-git a {
+  color: #767676;
+}

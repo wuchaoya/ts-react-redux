@@ -1,24 +1,41 @@
 import * as constants from '../constants';
 
-export interface IRequestArticle {
-  type: constants.REQUEST_ARTICLE;
+export interface IRequestArticles {
+  type: constants.REQUEST_ARTICLES
+  pageIndex: number
+  pageSize: number
 }
 
-export interface IReceiveArticle {
-  type: constants.RECEIVE_ARTICLE;
-  article: Array<object>;
+export interface IReceiveArticles {
+  type: constants.RECEIVE_ARTICLES
+  pageIndex: number
+  pageSize: number
+  total: number
+  articles: object[]
 }
 
 export interface IRequestInfo {
-  type: constants.REQUEST_INFO;
+  type: constants.REQUEST_INFO
 }
 
 export interface IReceiveInfo {
-  type: constants.RECEIVE_INFO;
-  info: object;
+  type: constants.RECEIVE_INFO
+  info: object
 }
 
-export type InfoAction = IRequestInfo | IReceiveInfo;
+export interface IRequestArticle {
+  type: constants.REQUEST_ARTICLE
+  Id: string
+}
+
+export interface IReceiveArticle {
+  type: constants.RECEIVE_ARTICLE
+  Id: string
+  article: object[]
+}
 
 export type ArticleAction = IRequestArticle | IReceiveArticle;
+export type ArticlesAction = IRequestArticles | IReceiveArticles;
+export type InfoAction = IRequestInfo | IReceiveInfo;
+
 

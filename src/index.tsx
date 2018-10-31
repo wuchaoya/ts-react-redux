@@ -5,8 +5,10 @@ import reducer from './reducers';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
-import Base from './router';
+import App from './containers/App';
 import rootSaga from './saga';
+
+import './common/indexStyle.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const defaultState = { article: [] };
@@ -20,7 +22,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Base />
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

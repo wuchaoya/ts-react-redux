@@ -1,19 +1,13 @@
-import * as React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Switch } from 'react-router';
-import { Article, App } from '../containers';
+import * as React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import ArticleDeil from '../containers/Article'
+import Articles from '../containers/Articles'
 
-export default class Base extends React.PureComponent {
-  
-  public render () {
-    return (
-      <Router>
-        <Switch>
-          <Route exact={true} component={App} path='' />
-          <Route exact={true} component={Article} path='/article' />
-        </Switch>
-      </Router>
-    )
-  }
-  
-}
+const RouterMap = () => (
+  <Switch>
+    <Route exact={true} path="/" component={Articles} />
+    <Route exact={true} path="/article/:Id" component={ArticleDeil} />
+  </Switch>
+)
+
+export default RouterMap
