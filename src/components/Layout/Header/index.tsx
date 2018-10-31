@@ -15,10 +15,11 @@ export interface ICoverTitle {
 }
 
 const navList = [
-  { title: '主页', icon: { __html: '&#xe600;' } },
-  { title: '文章', icon: { __html: '&#xe643;' } },
-  { title: '归档', icon: { __html: '&#xe660;' } },
-  { title: '生活', icon: { __html: '&#xe6a1;' } }
+  { title: '主页', icon: { __html: '&#xe600;' }, link: '/' },
+  { title: '文章', icon: { __html: '&#xe643;' }, link: '/' },
+  { title: '归档', icon: { __html: '&#xe660;' }, link: '/time-file' },
+  { title: '生活', icon: { __html: '&#xe6a1;' }, link: '/' },
+  { title: '简历', icon: { __html: '&#xe60e;' }, link: '/' }
 ]
 
 export default class HeaderDom extends React.PureComponent {
@@ -46,7 +47,7 @@ class Nav extends  React.PureComponent<INavData> {
         <Col span={14}>
           {this.props.data.map((item: any) => (
             <div key={item.title} className='header-title-item'>
-              <Link to='article'>
+              <Link to={item.link}>
                 <span className='iconfont' style={{ marginRight: 5 }} dangerouslySetInnerHTML={item.icon}/>
                 {item.title}
               </Link>

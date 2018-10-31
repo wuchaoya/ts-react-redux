@@ -1,15 +1,12 @@
+import { blogFetch } from '../common';
+import * as types from '../types';
 
-export const api = 'http://localhost:8000/api';
+export const api = 'http://localhost:8000'
+
+export const fetchArticles = (payload: types.IPayload) => blogFetch('/articles', payload)
+
+export const fetchArticle = () => blogFetch('/article')
+
+export const fetchInfo = () => blogFetch('/info')
 
 
-export const fetchArticles = (pageIndex: number, pageSize: number) => {
-  return fetch(`${api}/articles?pageIndex=${pageIndex}&pageSize=${pageSize}`).then(response => response.json())
-}
-
-export const fetchArticle = () => {
-  return fetch(`${api}/article`).then(response => response.json());
-};
-
-export const fetchInfo = () => {
-  return fetch(`${api}/info`).then(response => response.json());
-};

@@ -9,5 +9,6 @@
   font-size: 15px;
 }
 .Pagination {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
 }

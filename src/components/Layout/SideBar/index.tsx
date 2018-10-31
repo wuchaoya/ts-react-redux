@@ -1,16 +1,12 @@
-import { Card, Col, Tag } from 'antd';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import img from '../../../static/bar-img.jpg';
-import './style.less';
-
-const { Meta } = Card;
-
+import { Card, Col, Tag } from 'antd'
+import * as React from 'react'
+import { Link } from 'react-router-dom'
+import './style.less'
+const { Meta } = Card
 interface ITag {
   title: string
   color: string
 }
-
 interface IInfo {
   classList: string[]
   tag: ITag[]
@@ -21,15 +17,12 @@ interface IInfo {
   name: string
   authorImg: string
 }
-
 interface IProps {
   info: IInfo
   articleTitle: string[]
 }
-
 const Sidebar = (props: IProps) => {
   const { articleTitle, info } = props
-  console.log(props)
   const { tag, github, present, click, ArticleNum, name, authorImg } = info
   const gitList = [0, 90, 180, 270]
   return (
@@ -38,7 +31,7 @@ const Sidebar = (props: IProps) => {
         hoverable={true}
         className="card"
         cover={
-          <img src={img} />
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527245834290&di=2286cc7354adc925f79b92b719162dd4&imgtype=0&src=http%3A%2F%2Fpic32.photophoto.cn%2F20140828%2F0005018403917054_b.jpg" />
         }>
         <div className="authorImg">
           <img src={authorImg} alt="" />
@@ -73,6 +66,14 @@ const Sidebar = (props: IProps) => {
           ))}
         </div>
       </Card>
+      <Card title="云标签" hoverable={true} className="card">
+        {tag &&
+        tag.map(item => (
+          <Tag key={item.title} color={item.color} className="tag">
+            {item.title}
+          </Tag>
+        ))}
+      </Card>
       <Card title="文章列表" hoverable={true} className="card">
         <ul>
           {articleTitle &&
@@ -82,14 +83,6 @@ const Sidebar = (props: IProps) => {
             </li>
           ))}
         </ul>
-      </Card>
-      <Card title="云标签" hoverable={true} className="card">
-        {tag &&
-        tag.map(item => (
-          <Tag key={item.title} color={item.color} className="tag">
-            {item.title}
-          </Tag>
-        ))}
       </Card>
     </Col>
   )

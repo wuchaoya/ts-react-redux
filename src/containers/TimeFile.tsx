@@ -1,8 +1,9 @@
-import { connect } from 'react-redux';
+import { connect} from 'react-redux';
 import { Dispatch } from 'redux';
-import Articles from '../components/Articles';
-import { REQUEST_ARTICLES } from '../constants';
-import * as types from '../types';
+
+import TimeFile from '../components/TimeFile'
+import { REQUEST_ARTICLES } from '../constants'
+import { IPayload } from '../types'
 
 interface IState {
   articles: IArticles
@@ -16,17 +17,20 @@ const mapStateToProps = (state: IState): object => {
     articles: state.articles.articles,
     total: state.articles.total
   }
-};
+}
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    fetchArticle: (payload: types.IPayload) => {
+    fetchArticle: (payload: IPayload) => {
       dispatch({
         payload,
         type: REQUEST_ARTICLES
       })
     }
   }
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Articles)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TimeFile)

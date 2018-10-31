@@ -1,15 +1,14 @@
 import * as constants from '../constants';
+import * as types from '../types';
 
 export interface IRequestArticles {
   type: constants.REQUEST_ARTICLES
-  pageIndex: number
-  pageSize: number
+  payload: types.IPayload;
 }
 
 export interface IReceiveArticles {
   type: constants.RECEIVE_ARTICLES
-  pageIndex: number
-  pageSize: number
+  payload: types.IPayload;
   total: number
   articles: object[]
 }
