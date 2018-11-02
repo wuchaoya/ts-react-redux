@@ -36,12 +36,12 @@ const Sidebar = (props: IProps) => {
         <Meta
           title={
             <div>
-              <span className="card-title">{name}</span>
+              <span className="card-title">{'MD' || name}</span>
             </div>
           }
           description={
             <div>
-              <p className="abstract">{present}</p>
+              <p className="abstract">{'望京码帝' || present}</p>
               <p className="abstract">
                 <span>文章 - {ArticleNum}</span>
                 <span style={{ marginRight: 10, marginLeft: 10 }}>|</span>

@@ -34,6 +34,7 @@
   justify-content: start;
 }
 .Sidebar .icon-git {
+  transition: all 0.5s ease;
   width: 45px;
   height: 45px;
   display: flex;

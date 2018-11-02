@@ -27,7 +27,7 @@ export default class HeaderDom extends React.PureComponent {
   render () {
     return (
       <div className='header'>
-        <Cover title={['react', 'ts']} subTitle={'好好学习，天天向上'}/>
+        <Cover title={['码', '帝']} subTitle={'高产似母猪，辛勤如小三'}/>
         <Nav data={navList}/>
       </div>
     )

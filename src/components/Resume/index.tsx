@@ -1,4 +1,4 @@
-import { Carousel } from 'antd'
+import { Carousel, Tooltip } from 'antd'
 import * as React from 'react'
 import About from './About'
 import CallMe from './CallMe'
@@ -52,6 +52,14 @@ class Resume extends React.Component<IProps> {
       this.carousel.prev()
     }
   }
+  public dotClick = (index: number): void => {
+    this.setState({ currentIndex: index }, () => {
+      this.carousel.goTo(index)
+    })
+  }
+  public next = () => {
+    this.carousel.next()
+  }
   public render() {
     const { currentIndex } = this.state
     const settings = {
@@ -71,21 +79,27 @@ class Resume extends React.Component<IProps> {
           ref={ref => (this.carousel = ref)}>
           {this.pageList.map((item, index) => (
             <div key={index} className={`item${index}`}>
-              6544545546
+              {index}
             </div>
           ))}
         </Carousel>
         <div className="resume-dots">
           {this.dotList.map((item, index) => (
-            <div key={index} className={`dot-wrp ${index === currentIndex ? 'current' : 'else'}`}>
-              <div
-                dangerouslySetInnerHTML={{ __html: item.icon }}
-                className={`dot ${index === currentIndex ? '' : 'current-dot'}`}
-              />
-              <div className="item" />
+            <div
+              className="dot-wrp"
+              key={index}
+              onClick={this.dotClick.bind(this,index)}>
+              <Tooltip placement="left" title={item.label}>
+                <div
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: item.icon }}
+                  className={currentIndex === index ? 'dot' : 'item'}
+                />
+              </Tooltip>
             </div>
           ))}
         </div>
+        <div className="next" onClick={this.next}>&#xe681;</div>
       </div>
     )
   }
