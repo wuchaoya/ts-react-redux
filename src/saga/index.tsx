@@ -3,7 +3,9 @@ import { watchYieldArticle } from './article';
 import { watchYieldArticles } from './articles';
 import { watchYieldInfo } from './info';
 import { watchYieldResume } from './resume';
+import { watchYieldSay } from './say';
+
 
 export default function* rootSaga() {
-  yield all([, watchYieldArticles(), watchYieldArticle(), watchYieldInfo(), watchYieldResume()]);
+  yield all([, watchYieldArticles(), watchYieldArticle(), watchYieldInfo(), watchYieldResume(),watchYieldSay()]);
 }

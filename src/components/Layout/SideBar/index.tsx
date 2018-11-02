@@ -1,7 +1,9 @@
-import { Card, Col, Tag } from 'antd'
+import { Card, Tag } from 'antd'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import headerImg  from '../../../static/bar-img.jpg'
 import './style.less'
+
 const { Meta } = Card
 interface ITag {
   title: string
@@ -26,13 +28,8 @@ const Sidebar = (props: IProps) => {
   const { tag, github, present, click, ArticleNum, name, authorImg } = info
   const gitList = [0, 90, 180, 270]
   return (
-    <Col span={6} className="Sidebar" offset={1}>
-      <Card
-        hoverable={true}
-        className="card"
-        cover={
-          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527245834290&di=2286cc7354adc925f79b92b719162dd4&imgtype=0&src=http%3A%2F%2Fpic32.photophoto.cn%2F20140828%2F0005018403917054_b.jpg" />
-        }>
+    <div className="Sidebar">
+      <Card hoverable={true} className="card" cover={<img src={headerImg} />}>
         <div className="authorImg">
           <img src={authorImg} alt="" />
         </div>
@@ -44,8 +41,8 @@ const Sidebar = (props: IProps) => {
           }
           description={
             <div>
-              <p>{present}</p>
-              <p>
+              <p className="abstract">{present}</p>
+              <p className="abstract">
                 <span>文章 - {ArticleNum}</span>
                 <span style={{ marginRight: 10, marginLeft: 10 }}>|</span>
                 <span>访问 - {click}</span>
@@ -59,7 +56,7 @@ const Sidebar = (props: IProps) => {
           {gitList.map(item => (
             <div
               key={item}
-              className="iconfont icon-git"
+              className="icon-font icon-git"
               style={{ transform: `rotate(${item}deg)` }}>
               <a href={github}> &#xea0a;</a>
             </div>
@@ -84,7 +81,7 @@ const Sidebar = (props: IProps) => {
           ))}
         </ul>
       </Card>
-    </Col>
+    </div>
   )
 }
 

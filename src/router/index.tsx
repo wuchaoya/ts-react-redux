@@ -1,35 +1,27 @@
-import * as React from 'react';
-import * as Loadable from 'react-loadable';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import App from '../containers/App';
-import loading from '../components/Loading';
+import * as React from 'react'
+import * as Loadable from 'react-loadable'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import App from '../containers/App'
+import loading from '../components/Loading'
 const RouterList: any[] = [
   {
-    component: Loadable({
-      loader: () => import('../containers/Articles'),
-      loading
-    }),
+    component: () => import('../containers/Articles'),
     path: '/'
   },
   {
-    component: Loadable({
-      loader: () => import('../containers/Article'),
-      loading
-    }),
+    component: () => import('../containers/Article'),
     path: '/article/:Id'
   },
   {
-    component: Loadable({
-      loader: () => import('../containers/Resume'),
-      loading
-    }),
+    component: () => import('../containers/Resume'),
     path: '/resume'
   },
   {
-    component: Loadable({
-      loader: () => import('../containers/TimeFile'),
-      loading
-    }),
+    component: () => import('../containers/Say'),
+    path: '/say'
+  },
+  {
+    component: () => import('../containers/TimeFile'),
     path: '/time-file'
   }
 ]
@@ -38,11 +30,19 @@ const RouterMap = () => (
     <App>
       <Switch>
         {RouterList.map(item => (
-          <Route key={item.path} exact={true} path={item.path} component={item.component} />
+          <Route
+            key={item.path}
+            exact={true}
+            path={item.path}
+            component={Loadable({
+              loader: item.component,
+              loading
+            })}
+          />
         ))}
       </Switch>
     </App>
   </Router>
 )
 
-export default RouterMap;
+export default RouterMap

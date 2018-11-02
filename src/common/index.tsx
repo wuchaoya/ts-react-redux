@@ -1,5 +1,4 @@
 export const api = 'http://132.232.34.190/api';
-
 export const format = (date: string): string => {
   const myDate = new Date(date)
   const year = myDate.getFullYear()
