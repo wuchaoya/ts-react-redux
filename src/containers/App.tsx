@@ -1,6 +1,7 @@
 import { REQUEST_INFO } from '../constants';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { withRouter } from 'react-router-dom';
 import App from '../components/App/index';
 
 interface ITitle {
@@ -16,7 +17,7 @@ interface IInfo {
   articles: IArticles
 }
 
-const mapStateToProps = ({ articles, info }: IInfo): object => {
+const mapStateToProps = ({ articles, info }: IInfo) => {
   if (articles.articles) {
     return {
       articleTitle: articles.articles.map(item => item.title),
@@ -30,4 +31,9 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
   return { actions: dispatch({ type: REQUEST_INFO }) }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const AppMap: any = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+
+export default  withRouter(AppMap);

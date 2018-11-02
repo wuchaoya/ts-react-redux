@@ -1,12 +1,10 @@
 import { blogFetch } from '../common';
 import * as types from '../types';
 
-export const api = 'http://localhost:8000'
+export const fetchArticles = (payLoad: types.IPayload) => blogFetch('/get-articles', payLoad)
 
-export const fetchArticles = (payload: types.IPayload) => blogFetch('/articles', payload)
+export const fetchInfo = () => blogFetch('/get-info')
 
-export const fetchArticle = () => blogFetch('/article')
+export const fetchArticle = (Id: string) => blogFetch('/get-article', { Id })
 
-export const fetchInfo = () => blogFetch('/info')
-
-
+export const fetchResume = () => blogFetch('/get-resume')

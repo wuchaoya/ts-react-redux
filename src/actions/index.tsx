@@ -33,8 +33,18 @@ export interface IReceiveArticle {
   article: object[]
 }
 
+export interface IRequestResume {
+  type: constants.REQUEST_RESUME
+}
+export interface IReceiveResume {
+  type: constants.RECEIVE_RESUME
+  resume: object
+}
+
 export type ArticleAction = IRequestArticle | IReceiveArticle;
 export type ArticlesAction = IRequestArticles | IReceiveArticles;
 export type InfoAction = IRequestInfo | IReceiveInfo;
+export type ResumeAction = IRequestResume | IReceiveResume
+
 
 

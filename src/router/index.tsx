@@ -1,15 +1,48 @@
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import ArticleDeil from '../containers/Article';
-import Articles from '../containers/Articles';
-import TimeFile from '../containers/TimeFile';
-
+import * as Loadable from 'react-loadable';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import App from '../containers/App';
+import loading from '../components/Loading';
+const RouterList: any[] = [
+  {
+    component: Loadable({
+      loader: () => import('../containers/Articles'),
+      loading
+    }),
+    path: '/'
+  },
+  {
+    component: Loadable({
+      loader: () => import('../containers/Article'),
+      loading
+    }),
+    path: '/article/:Id'
+  },
+  {
+    component: Loadable({
+      loader: () => import('../containers/Resume'),
+      loading
+    }),
+    path: '/resume'
+  },
+  {
+    component: Loadable({
+      loader: () => import('../containers/TimeFile'),
+      loading
+    }),
+    path: '/time-file'
+  }
+]
 const RouterMap = () => (
-  <Switch>
-    <Route exact={true} path='/' component={Articles} />
-    <Route exact={true} path='/article/:Id' component={ArticleDeil} />
-    <Route exact={true} path='/time-file' component={TimeFile} />
-  </Switch>
+  <Router>
+    <App>
+      <Switch>
+        {RouterList.map(item => (
+          <Route key={item.path} exact={true} path={item.path} component={item.component} />
+        ))}
+      </Switch>
+    </App>
+  </Router>
 )
 
-export default RouterMap
+export default RouterMap;

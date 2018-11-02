@@ -1,4 +1,4 @@
-export const api = 'http://localhost:8000'
+export const api = 'http://132.232.34.190/api';
 
 export const format = (date: string): string => {
   const myDate = new Date(date)
@@ -51,7 +51,5 @@ export const blogFetch = (
       method
     }
   }
-  return fetch(url, initObj)
-  .then(response => response.json())
-  .then(response => response)
+  return fetch(url, initObj).then(response => response.json())
 }

@@ -1,28 +1,38 @@
 import * as React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { ReactHTML } from 'react';
 import { Col, Layout, Row } from 'antd';
-import RouterMap from '../../router'
-import  HeaderDom  from '../Layout/Header';
-import Sidebar from '../Layout/SideBar';
+import  Header  from '../Layout/Header';
+import Sidebar, { IInfo } from '../Layout/SideBar';
 import './index.less';
 
 const { Footer, Content } = Layout;
 
-const App = (props: any): any => {
-  const { info, articleTitle } = props;
-  return (
-    <Router>
+interface ILocation {
+  pathname: string
+}
+
+interface IProps {
+  info: IInfo
+  articleTitle: string[]
+  children: ReactHTML
+  location: ILocation
+}
+
+export default class App extends React.PureComponent<IProps> {
+
+  public render () {
+    const { info, articleTitle, children, location } = this.props
+    const isResume = location.pathname === '/resume'
+    return !isResume ? (
       <Layout>
-        <HeaderDom />
+        <Header />
         <Layout>
           <Content>
             <Row>
               <Col span={5} />
               <Col span={14}>
                 <Row>
-                  <Col span={16}>
-                    <RouterMap />
-                  </Col>
+                  <Col span={16}>{children}</Col>
                   <Sidebar info={info} articleTitle={articleTitle} />
                 </Row>
               </Col>
@@ -31,8 +41,8 @@ const App = (props: any): any => {
         </Layout>
         <Footer>Footer</Footer>
       </Layout>
-    </Router>
-  )
-};
-
-export default App;
+    ) : (
+      <div>{children}</div>
+    )
+  }
+}
