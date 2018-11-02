@@ -1,7 +1,12 @@
-import { Tooltip } from 'antd';
-import * as React from 'react';
-import './style.less';
-
+import { Tooltip } from 'antd'
+import * as React from 'react'
+import About from './About'
+import CallMe from './CallMe'
+import Home from './Home'
+import Skill from './Skill'
+import './style.less'
+import Undergo from './Undergo'
+import Works from './Works'
 interface IResume {
   contact: object
   default: object
@@ -10,15 +15,11 @@ interface IResume {
   titleList: object[]
   works: object
 }
-
 interface IProps {
   resume: IResume
 }
-
-export default class Resume extends React.Component<IProps> {
-  
+class Resume extends React.Component<IProps> {
   public timer: any
-  
   public state = {
     currPage: 0,
     dotList: [
@@ -30,15 +31,14 @@ export default class Resume extends React.Component<IProps> {
       { icon: '&#xe601;', label: '联系我' }
     ],
     pageList: [
-      { className: 'curr-page' },
-      { className: 'next-page' },
-      { className: 'page-section' },
-      { className: 'page-section' },
-      { className: 'page-section' },
-      { className: 'prev-page' }
+      { className: 'curr-page', component: <Home /> },
+      { className: 'next-page', component: <About /> },
+      { className: 'page-section', component: <Skill /> },
+      { className: 'page-section', component: <Undergo /> },
+      { className: 'page-section', component: <Works /> },
+      { className: 'prev-page', component: <CallMe /> }
     ]
   }
-  
   public onWheel = (e: any): void => {
     const { deltaY } = e
     clearTimeout(this.timer)
@@ -50,15 +50,15 @@ export default class Resume extends React.Component<IProps> {
           pageList: pageList.map((item, index, arr) => {
             if (deltaY > 0) {
               if (index === 0) {
-                return arr[arr.length - 1]
+                return { ...item, className: arr[arr.length - 1].className }
               } else {
-                return arr[index - 1]
+                return { ...item, className: arr[index - 1].className }
               }
             } else {
               if (index === arr.length - 1) {
-                return arr[0]
+                return { ...item, className: arr[0].className }
               } else {
-                return arr[index + 1]
+                return { ...item, className: arr[index + 1].className }
               }
             }
           })
@@ -73,37 +73,38 @@ export default class Resume extends React.Component<IProps> {
       )
     }, 300)
   }
-  
   public render() {
     const { pageList, dotList, currPage } = this.state
     return (
-      <div className="section-wrap" onWheel={this.onWheel}>
-        {pageList.map((item, index) => (
-          <div
-            className={`section section${index} ${item.className}`}
-            key={index}>
-            {index}
+      <div className="resume">
+        <div className="section-wrap" onWheel={this.onWheel}>
+          {pageList.map((item, index) => (
+            <div
+              className={`section section${index} ${item.className}`}
+              key={index}>
+              {item.component}
+            </div>
+          ))}
+          <div className="dot-wrap">
+            {dotList.map((item, index) => {
+              return currPage === index ? (
+                <div key={index}>
+                  <Tooltip placement="left" title={item.label}>
+                    <span
+                      className="iconfont active"
+                      dangerouslySetInnerHTML={{ __html: item.icon }}
+                    />
+                  </Tooltip>
+                </div>
+              ) : (
+                <div key={index} className="item" />
+              )
+            })}
           </div>
-        ))}
-        <div className="dot-wrap">
-          {dotList.map((item, index) => {
-            return currPage === index ? (
-              <div key={index}>
-                <Tooltip placement="left" title={item.label}>
-                  <span
-                    className="iconfont dot"
-                    dangerouslySetInnerHTML={{ __html: item.icon }}
-                  />
-                </Tooltip>
-              </div>
-            ) : (
-              <div key={index} className="item" />
-            )
-          })}
         </div>
       </div>
     )
   }
-  
 }
 
+export default Resume

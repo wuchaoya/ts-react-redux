@@ -1,7 +1,7 @@
 import { connect} from 'react-redux';
 import { Dispatch } from 'redux';
 import { REQUEST_RESUME } from '../constants';
-import Resume from '../components/Resume';
+import Resume from '../components/Resume/index';
 
 
 interface IResume {
