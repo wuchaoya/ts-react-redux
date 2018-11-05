@@ -1,12 +1,13 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects'
-import { RECEIVE_SAY, REQUEST_SAY, SAYAction } from '../actions/say'
-
+import { all, call, put, takeLatest } from 'redux-saga/effects';
+import {  SAYAction } from '../actions/say';
+import * as containers from '../constants';
 import { getSay } from '../services'
+
 function* yieldSay(action: SAYAction) {
-  const response = yield call(getSay, action.payload)
-  yield put({ type: RECEIVE_SAY, ...response, payload: action.payload })
+  const response = yield call(getSay, action.payload);
+  yield put({ type: containers.RECEIVE_SAY, ...response, payload: action.payload })
 }
 
 export function* watchYieldSay() {
-  yield all([takeLatest(REQUEST_SAY, yieldSay)])
+  yield all([takeLatest(containers.REQUEST_SAY, yieldSay)])
 }

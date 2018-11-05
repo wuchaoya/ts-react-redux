@@ -28,7 +28,7 @@ export default class TimeFile extends React.PureComponent<IArticles> {
     pageIndex: 1,
     pageSize: 15,
     timeFile: true
-  }
+  };
   
   public componentDidMount() {
     this.props.fetchArticle(this.state);
@@ -39,17 +39,17 @@ export default class TimeFile extends React.PureComponent<IArticles> {
       pageSize,
       pageIndex
     }, () => this.props.fetchArticle(this.state))
-  }
+  };
   
   public timeView = () => {
-    const {articles = []} = this.props
-    const timeItems: any[] = []
-    const colorArr = ['red', 'blue', 'green']
+    const {articles = []} = this.props;
+    const timeItems: any[] = [];
+    const colorArr = ['red', 'blue', 'green'];
     articles.forEach((item, index, arr) => {
       const timeStr = item.create_at.substring(
         0,
         item.create_at.lastIndexOf('-')
-      )
+      );
       if(
         index === 0 ||
         timeStr !==
@@ -61,7 +61,7 @@ export default class TimeFile extends React.PureComponent<IArticles> {
         timeItems.push({
           key: timeStr,
           type: 'time'
-        })
+        });
         timeItems.push({
           _id: item._id,
           color: colorArr[index % 3],
@@ -76,7 +76,7 @@ export default class TimeFile extends React.PureComponent<IArticles> {
           type: 'item'
         })
       }
-    })
+    });
     return (
       <Timeline>
         {timeItems.map((article, index) => {
@@ -116,11 +116,11 @@ export default class TimeFile extends React.PureComponent<IArticles> {
         })}
       </Timeline>
     )
-  }
+  };
   
   public render() {
-    const {total} = this.props
-    const {pageIndex, pageSize} = this.state
+    const {total} = this.props;
+    const {pageIndex, pageSize} = this.state;
     return (
       <div className="time-file">
         {this.timeView()}
@@ -135,4 +135,5 @@ export default class TimeFile extends React.PureComponent<IArticles> {
       </div>
     )
   }
+  
 }

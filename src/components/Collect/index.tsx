@@ -1,23 +1,26 @@
-import { Card, Col, Modal, Pagination, Row } from 'antd'
-import QueueAnim from 'rc-queue-anim'
-import * as React from 'react'
+import * as React from 'react';
+import { Card, Col, Modal, Pagination, Row } from 'antd';
+import QueueAnim from 'rc-queue-anim';
+import { format } from '../../common';
+import './style.less';
 
-import { format } from '../../common'
-import './style.less'
 interface ICollect {
   content?: string
   _id?: string
   create_at?: string
   title?: string
 }
+
 interface IState {
   collectItem: ICollect
   visible: boolean
 }
+
 interface IPayload {
   pageIndex: number
   pageSize: number
 }
+
 interface IProps {
   collect: ICollect[]
   payload: IPayload
@@ -25,33 +28,40 @@ interface IProps {
   deleteCollect: (id: string) => void
   fetchCollect: (payload?: object) => void
 }
+
 class Collect extends React.Component<IProps> {
+  
   public state: IState = {
     collectItem: {},
     visible: false
-  }
+  };
+  
   public componentDidMount() {
     this.props.fetchCollect()
   }
+  
   public cardClick = (item: ICollect) => {
     this.setState({
       collectItem: item,
       visible: true
     })
-  }
+  };
+  
   public onChange = (pageIndex: number, pageSize: number) => {
     this.props.fetchCollect({ pageIndex, pageSize })
-  }
+  };
   
   public setVisible = () => {
-  this.setState({ visible: false })
-}
+    this.setState({ visible: false
+  })
+  
+};
   
   public render() {
-    const { visible, collectItem } = this.state
-    const { collect, total, payload } = this.props
-    const { pageIndex, pageSize } = payload
-    const replaceHtml = /<(?:.|\s)*?>/g
+    const { visible, collectItem } = this.state;
+    const { collect, total, payload } = this.props;
+    const { pageIndex, pageSize } = payload;
+    const replaceHtml = /<(?:.|\s)*?>/g;
     return (
       <div className="collect">
         <Modal
@@ -112,6 +122,7 @@ class Collect extends React.Component<IProps> {
       </div>
     )
   }
+  
 }
 
 export default Collect

@@ -5,7 +5,7 @@ import  Header  from '../Layout/Header';
 import Footer from '../Layout/Footer'
 import Sidebar, { IInfo } from '../Layout/SideBar';
 import { IPayload } from '../../types'
-import './index.less';
+import './style.less';
 
 const { Content } = Layout;
 
@@ -23,9 +23,8 @@ interface IProps {
 export default class App extends React.PureComponent<IProps> {
 
   public render () {
-    const { info, children, location, fetchArticle} = this.props
-    console.log(this.props.fetchArticle)
-    const isResume = location.pathname === '/resume'
+    const { info, children, location, fetchArticle} = this.props;
+    const isResume = location.pathname === '/resume';
     return !isResume ? (
       <Layout>
         <BackTop />
@@ -59,4 +58,5 @@ export default class App extends React.PureComponent<IProps> {
       <div>{children}</div>
     )
   }
+  
 }

@@ -18,3 +18,18 @@ export const REQUEST_RESUME = 'REQUEST_RESUME';
 export type REQUEST_RESUME = typeof REQUEST_RESUME;
 export const RECEIVE_RESUME = 'RECEIVE_RESUME';
 export type RECEIVE_RESUME = typeof RECEIVE_RESUME;
+
+
+export  const REQUEST_COLLECT = 'REQUEST_COLLECT';
+export type REQUEST_COLLECT = typeof REQUEST_COLLECT;
+export const RECEIVE_COLLECT = 'RECEIVE_COLLECT';
+export type RECEIVE_COLLECT = typeof RECEIVE_COLLECT;
+export const DELETE_COLLECT = 'DELETE_COLLECT';
+export type DELETE_COLLECT = typeof DELETE_COLLECT;
+export const ADD_COLLECT = 'ADD_COLLECT';
+export type ADD_COLLECT = typeof ADD_COLLECT;
+
+export const REQUEST_SAY = 'REQUEST_SAY'
+export type REQUEST_SAY = typeof REQUEST_SAY
+export const RECEIVE_SAY = 'RECEIVE_SAY'
+export type RECEIVE_SAY = typeof RECEIVE_SAY

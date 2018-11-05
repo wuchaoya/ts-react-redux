@@ -26,15 +26,15 @@ export default class Say extends React.PureComponent<IProps> {
   
   public onChange = (pageIndex: number, pageSize: number) => {
     this.props.fetchSay({ pageIndex, pageSize })
-  }
+  };
   
   public onShowSizeChange = (pageIndex: number, pageSize: number) => {
     this.props.fetchSay({ pageIndex, pageSize })
-  }
+  };
   
   public render() {
-    const { say, total, payload } = this.props
-    const { pageIndex, pageSize } = payload
+    const { say, total, payload } = this.props;
+    const { pageIndex, pageSize } = payload;
     return (
       <div className="time-line-wrp">
         <div className="time-line">

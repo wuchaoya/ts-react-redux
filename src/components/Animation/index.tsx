@@ -1,6 +1,7 @@
-import QueueAnim from 'rc-queue-anim'
-import * as React from 'react'
-import { ReactHTML } from 'react'
+import QueueAnim from 'rc-queue-anim';
+import * as React from 'react';
+import { ReactHTML } from 'react';
+
 interface IProps {
   children: ReactHTML
 }

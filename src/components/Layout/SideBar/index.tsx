@@ -1,14 +1,16 @@
-import { Card, Tag, Tooltip } from 'antd'
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import headerImg  from '../../../static/bar-img.jpg'
-import './style.less'
+import * as React from 'react';
+import { Card, Tag, Tooltip } from 'antd';
+import { Link } from 'react-router-dom';
+import headerImg  from '../../../static/bar-img.jpg';
+import './style.less';
 
-const { Meta } = Card
+const { Meta } = Card;
+
 interface ITag {
   title: string
   color: string
 }
+
 export interface IInfo {
   classList: string[]
   tag: ITag[]
@@ -19,6 +21,7 @@ export interface IInfo {
   authorImg: string
   lastArticle: any[]
 }
+
 export interface IProps {
   info: IInfo
   fetchArticle: (payload: object) => void
@@ -32,18 +35,10 @@ export default class Sidebar extends React.PureComponent<IProps> {
       pageSize: 10,
       tagTitle: item.title
     })
-  }
+  };
   
   public render () {
-    const {
-      tag,
-      present,
-      access,
-      ArticleNum,
-      name,
-      authorImg,
-      lastArticle
-    } = this.props.info
+    const { tag, present, access, ArticleNum, name, authorImg, lastArticle } = this.props.info;
     return (
       <div className="Sidebar">
         <Card hoverable={true} className="card" cover={<img src={headerImg} />}>
@@ -126,5 +121,6 @@ export default class Sidebar extends React.PureComponent<IProps> {
       </div>
     )
   }
+  
 }
 

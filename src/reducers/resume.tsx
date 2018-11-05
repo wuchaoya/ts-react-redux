@@ -4,11 +4,12 @@ import * as constants from '../constants';
 const resume = (state: object = {}, action: ResumeAction) => {
   switch (action.type) {
     case constants.REQUEST_RESUME:
-      return state
+      return state;
     case constants.RECEIVE_RESUME:
-      return { ...state, ...action.resume }
+      return { ...state, ...action.resume };
     default:
-      return state
+      return state;
   }
 }
+
 export default resume;

@@ -8,20 +8,20 @@ import * as types from '../../types';
 import './style.less'
 
 interface IArticle {
-  _id: string
-  tag: ITag
-  content: string
-  title: string
-  create_at: string
-  updated_at: string
-  access: string
-  type: string
-  abstract: string
+  _id: string;
+  tag: ITag;
+  content: string;
+  title: string;
+  create_at: string;
+  updated_at: string;
+  access: string;
+  type: string;
+  abstract: string;
 }
 
 interface ITag {
-  color: string
-  title: string
+  color: string;
+  title: string;
 }
 
 interface IHistory {
@@ -36,10 +36,11 @@ interface IArticles {
 }
 
 class Articles extends React.Component<IArticles> {
+  
   public state = {
     pageIndex: 1,
     pageSize: 5
-  }
+  };
   
   public onChange = (page: number, pageSize: number) => {
     this.setState(
@@ -51,13 +52,15 @@ class Articles extends React.Component<IArticles> {
         this.props.fetchArticle(this.state)
       }
     )
-  }
+  };
+  
   public componentDidMount() {
     this.props.fetchArticle(this.state)
   }
+  
   public render() {
-    const { articles = [], total } = this.props
-    const { pageIndex, pageSize } = this.state
+    const { articles = [], total } = this.props;
+    const { pageIndex, pageSize } = this.state;
     return (
       <div>
         <QueueAnim
@@ -99,5 +102,7 @@ class Articles extends React.Component<IArticles> {
       </div>
     )
   }
+  
 }
-export default Articles
+
+export default Articles;

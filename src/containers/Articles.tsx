@@ -7,10 +7,12 @@ import * as types from '../types';
 interface IState {
   articles: IArticles
 }
+
 interface IArticles {
   articles: object[]
   total: number
 }
+
 const mapStateToProps = (state: IState): object => {
   return {
     articles: state.articles.articles,

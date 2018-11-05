@@ -36,6 +36,7 @@ export interface IReceiveArticle {
 export interface IRequestResume {
   type: constants.REQUEST_RESUME
 }
+
 export interface IReceiveResume {
   type: constants.RECEIVE_RESUME
   resume: object

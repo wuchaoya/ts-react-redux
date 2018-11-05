@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Dropdown, Icon, Input, Layout, Menu, Row } from 'antd'
 import Texty from 'rc-texty'
-
 import 'rc-texty/assets/index.css'
 import TweenOne from 'rc-tween-one'
 import './style.less';
 
 const { Header } = Layout;
-const { Search } = Input
+const { Search } = Input;
 
 export interface INavData {
   data: any
@@ -24,7 +23,7 @@ export interface ICoverTitle {
   subTitle: string
 }
 
-interface IProps {
+export interface IProps {
   fetchArticle: (payload: object) => void
 }
 
@@ -33,52 +32,52 @@ const navList = [
   { title: '归档', icon: { __html: '&#xe660;' }, link: '/time-file' },
   { title: '生活', icon: { __html: '&#xe6a1;' }, link: '/say' },
   { title: '收藏', icon: { __html: '&#xe60e;' }, link: '/collect' }
-]
+];
 
 const geInterval = (e: any) => {
   switch (e.index) {
     case 0:
-      return 0
+      return 0;
     case 1:
-      return 150
+      return 150;
     case 2:
     case 3:
     case 4:
     case 5:
     case 6:
-      return 150 + 450 + (e.index - 2) * 10
+      return 150 + 450 + (e.index - 2) * 10;
     default:
-      return 150 + 450 + (e.index - 6) * 150
+      return 150 + 450 + (e.index - 6) * 150;
   }
-}
+};
+
 const getEnter = (e: any) => {
   const t = {
     opacity: 0,
     scale: 0.8,
     y: '-100%'
-  }
+  };
   if (e.index >= 2 && e.index <= 6) {
     return { ...t, y: '-30%', duration: 150 }
   }
   return t
-}
+};
 
 const getSplit = (e: any) => {
-  const t = e.split(' ')
-  const c: any[] = []
+  const t = e.split(' ');
+  const c: any[] = [];
   t.forEach((str: string, i: number) => {
-    c.push(<span key={`${str}-${i}`}>{str}</span>)
+    c.push(<span key={`${str}-${i}`}>{str}</span>);
     if (i < t.length - 1) {
       c.push(<span key={` -${i}`} />)
     }
-  })
-  return c
-}
+  });
+  return c;
+};
 
 export default class HeaderDom extends React.PureComponent<IProps> {
   
   render () {
-    console.log(this.props)
     return (
       <div className='header'>
         <Cover title={['码', '帝']} subTitle={'高产似母猪，辛勤如小三'}/>
@@ -86,6 +85,7 @@ export default class HeaderDom extends React.PureComponent<IProps> {
       </div>
     )
   }
+  
 }
 
 class Nav extends  React.PureComponent<INavData> {
@@ -100,7 +100,7 @@ class Nav extends  React.PureComponent<INavData> {
       pageSize: 10,
       title: value
     })
-  }
+  };
   
   render () {
     return (
@@ -140,6 +140,7 @@ class Nav extends  React.PureComponent<INavData> {
       </Row>
     )
   }
+  
 }
 
 class Cover extends React.PureComponent<ICoverTitle> {
@@ -221,7 +222,6 @@ class Cover extends React.PureComponent<ICoverTitle> {
     )
   }
 }
-
 
 
 class _Menu  extends React.PureComponent<IMenu> {

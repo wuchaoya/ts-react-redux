@@ -3,7 +3,7 @@ import * as constants from '../constants';
 import { fetchResume } from '../services'
 
 function* yieldResume() {
-  const resume = yield call(fetchResume)
+  const resume = yield call(fetchResume);
   yield put({ type: constants.RECEIVE_RESUME, resume })
 }
 export function* watchYieldResume() {

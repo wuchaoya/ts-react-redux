@@ -1,12 +1,13 @@
-import { Carousel, Tooltip } from 'antd'
-import * as React from 'react'
-import About from './About'
-import CallMe from './CallMe'
-import Home from './Home'
-import Skill from './Skill'
-import './style.less'
-import Undergo from './Undergo'
-import Works from './Works'
+import * as React from 'react';
+import { Carousel, Tooltip } from 'antd';
+import About from './About';
+import CallMe from './CallMe';
+import Home from './Home';
+import Skill from './Skill';
+import './style.less';
+import Undergo from './Undergo';
+import Works from './Works';
+
 interface IResume {
   contact: object
   default: object
@@ -15,14 +16,19 @@ interface IResume {
   titleList: object[]
   works: object
 }
+
 interface IProps {
   resume: IResume
 }
+
 interface IE {
   deltaY: number
 }
+
 class Resume extends React.Component<IProps> {
-  public carousel: any
+  
+  public carousel: any;
+  
   public pageList = [
     { color: '#85ada3', component: <Home /> },
     { color: '#0e8d82', component: <About /> },
@@ -30,7 +36,8 @@ class Resume extends React.Component<IProps> {
     { color: '#925b4b', component: <Undergo /> },
     { color: '#48829c', component: <Works /> },
     { color: '#9d946d', component: <CallMe /> }
-  ]
+  ];
+  
   public dotList = [
     { icon: '&#xe600;', label: '首页' },
     { icon: '&#xe63e;', label: '关于我' },
@@ -38,30 +45,36 @@ class Resume extends React.Component<IProps> {
     { icon: '&#xe7a2;', label: '经历' },
     { icon: '&#xe619;', label: '作品' },
     { icon: '&#xe601;', label: '联系我' }
-  ]
+  ];
+  
   public state = {
     currentIndex: 0
-  }
+  };
+  
   public constructor(props: IProps) {
     super(props)
   }
+  
   public onWheel = (e: IE) => {
     if (e.deltaY > 0) {
       this.carousel.next()
     } else {
       this.carousel.prev()
     }
-  }
+  };
+  
   public dotClick = (index: number): void => {
     this.setState({ currentIndex: index }, () => {
       this.carousel.goTo(index)
     })
-  }
+  };
+  
   public next = () => {
     this.carousel.next()
-  }
+  };
+  
   public render() {
-    const { currentIndex } = this.state
+    const { currentIndex } = this.state;
     const settings = {
       beforeChange: (currentSlide: number, nextSlide: number) => {
         this.setState({ currentIndex: nextSlide }, () => {
@@ -70,7 +83,8 @@ class Resume extends React.Component<IProps> {
       },
       dots: false,
       infinite: false
-    }
+    };
+    
     return (
       <div className="resume" onWheel={this.onWheel}>
         <Carousel
@@ -103,6 +117,7 @@ class Resume extends React.Component<IProps> {
       </div>
     )
   }
+  
 }
 
 export default Resume

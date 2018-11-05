@@ -1,13 +1,15 @@
-import { ArticlesAction } from '../actions'
-import { RECEIVE_ARTICLES, REQUEST_ARTICLES } from '../constants'
+import { ArticlesAction } from '../actions';
+import { RECEIVE_ARTICLES, REQUEST_ARTICLES } from '../constants';
+
 const articles = (state: object[] = [], action: ArticlesAction): object => {
   switch (action.type) {
     case REQUEST_ARTICLES:
-      return state
+      return state;
     case RECEIVE_ARTICLES:
-      return { articles: action.articles, total: action.total }
+      return { articles: action.articles, total: action.total };
     default:
-      return state
+      return state;
   }
 }
-export default articles
+
+export default articles;

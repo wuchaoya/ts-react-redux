@@ -1,46 +1,33 @@
-interface IPayload {
-  pageIndex?: number
-  pageSize?: number
-  timeFile?: boolean
-  id?: string
+import * as containers from '../constants';
+
+export interface IPayload {
+  pageIndex?: number;
+  pageSize?: number;
+  timeFile?: boolean;
+  id?: string;
 }
 
-const REQUEST_COLLECT = 'REQUEST_COLLECT'
-type REQUEST_COLLECT = typeof REQUEST_COLLECT
-const RECEIVE_COLLECT = 'RECEIVE_COLLECT'
-type RECEIVE_COLLECT = typeof RECEIVE_COLLECT
-const DELETE_COLLECT = 'DELETE_COLLECT'
-type DELETE_COLLECT = typeof DELETE_COLLECT
-const ADD_COLLECT = 'ADD_COLLECT'
-type ADD_COLLECT = typeof ADD_COLLECT
-
-interface IAddCollect {
-  type: ADD_COLLECT
-  payload: object
-}
-interface IRequestCollect {
-  type: REQUEST_COLLECT
-  payload: IPayload
-}
-interface IDeleteCollect {
-  type: DELETE_COLLECT
-  payload: object
-}
-interface IReceiveCollect {
-  type: RECEIVE_COLLECT
-  payload: IPayload
-  total: number
-  collect: object[]
+export interface IAddCollect {
+  type: containers.ADD_COLLECT;
+  payload: object;
 }
 
-type collectAction = IRequestCollect | IReceiveCollect
-export {
-  ADD_COLLECT,
-  collectAction,
-  DELETE_COLLECT,
-  REQUEST_COLLECT,
-  RECEIVE_COLLECT,
-  IPayload,
-  IAddCollect,
-  IDeleteCollect
+export interface IRequestCollect {
+  type: containers.REQUEST_COLLECT;
+  payload: IPayload;
 }
+
+export interface IDeleteCollect {
+  type: containers.DELETE_COLLECT;
+  payload: object;
+}
+
+export interface IReceiveCollect {
+  type: containers.RECEIVE_COLLECT;
+  payload: IPayload;
+  total: number;
+  collect: object[];
+}
+
+export type collectAction = IRequestCollect | IReceiveCollect;
+

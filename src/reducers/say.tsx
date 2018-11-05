@@ -1,17 +1,19 @@
-import { RECEIVE_SAY, REQUEST_SAY, SAYAction } from '../actions/say'
+import { SAYAction } from '../actions/say';
+import * as containers from '../constants';
 
 const say = (state = { say: [] }, action: SAYAction) => {
   switch (action.type) {
-    case REQUEST_SAY:
-      return { payload: action.payload }
-    case RECEIVE_SAY:
+    case containers.REQUEST_SAY:
+      return { payload: action.payload };
+    case containers.RECEIVE_SAY:
       return {
         payload: action.payload,
         say: action.say,
         total: action.total
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
+
 export default say;

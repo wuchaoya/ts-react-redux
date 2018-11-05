@@ -1,67 +1,65 @@
-import { Card } from 'antd';
-import Highlight from 'react-highlight'
 import * as React from 'react';
-import { format } from '../../common'
-import './highlight.less'
+import Highlight from 'react-highlight';
+import { Card } from 'antd';
+import { format } from '../../common';
+import './highlight.less';
 import './style.less';
 
 interface IArticle {
-  _id: string
-  title: string
-  create_at: string
-  updated_at: string
-  access: string
-  type: string
-  content: string
-  tag: ITag
+  _id: string;
+  title: string;
+  create_at: string;
+  updated_at: string;
+  access: string;
+  type: string;
+  content: string;
+  tag: ITag;
 }
 
 interface ITag {
-  color: string
-  title: string
+  color: string;
+  title: string;
 }
 
 interface IParams {
-  Id: string
+  Id: string;
 }
 
 interface IMatch {
-  params: IParams
+  params: IParams;
 }
 
 interface IProps {
-  fetchArticle: (Id: string) => any
-  article: IArticle
-  match: IMatch
+  fetchArticle: (Id: string) => any;
+  article: IArticle;
+  match: IMatch;
 }
 
-class Article extends React.Component<IProps> {
+export default  class Article extends React.Component<IProps> {
   
   constructor(props: IProps) {
     super(props)
   }
   
+  public componentDidUpdate(prevProps: IProps) {
+    if (this.props.match.params.Id !== prevProps.match.params.Id) {
+      this.props.fetchArticle(this.props.match.params.Id)
+    }
+  }
+  
   public addCode = (content: string) => {
     if (!content) return;
     return content
-    .replace('<pre>', '<pre><code>')
-    .replace('</pre>', '</pre></code>')
-  }
+    .replace(new RegExp('<pre>', 'g'), '<pre><code>')
+    .replace(new RegExp('</pre>', 'g'), '</code></pre>')
+  };
   
   public componentDidMount() {
     this.props.fetchArticle(this.props.match.params.Id)
-  }
+  };
   
   public render() {
-    console.log(this.props)
-    const {
-      title,
-      create_at,
-      access,
-      type,
-      content = '',
-      tag = {title: ''}
-    } = this.props.article
+    const {title, create_at, access, type, content = '', tag = {title: ''}} = this.props.article;
     return (
       <div className="article">
         <Card hoverable={true} bordered={false}>
@@ -80,7 +78,8 @@ class Article extends React.Component<IProps> {
         </Card>
       </div>
     )
-  }
+  };
+  
 }
 
-export default Article
+

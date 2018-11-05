@@ -9,8 +9,7 @@ import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import RouterMap from './router';
 import rootSaga from './saga';
-
-import './common/indexStyle.less';
+import './indexStyle.less';
 
 const sagaMiddleware = createSagaMiddleware();
 const defaultState = { article: [] };
