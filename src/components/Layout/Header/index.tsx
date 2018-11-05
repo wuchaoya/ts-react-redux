@@ -16,10 +16,9 @@ export interface ICoverTitle {
 
 const navList = [
   { title: '主页', icon: { __html: '&#xe600;' }, link: '/' },
-  { title: '文章', icon: { __html: '&#xe643;' }, link: '/' },
   { title: '归档', icon: { __html: '&#xe660;' }, link: '/time-file' },
   { title: '生活', icon: { __html: '&#xe6a1;' }, link: '/say' },
-  { title: '简历', icon: { __html: '&#xe60e;' }, link: '/resume' }
+  { title: '收藏', icon: { __html: '&#xe60e;' }, link: '/collect' }
 ]
 
 export default class HeaderDom extends React.PureComponent {
