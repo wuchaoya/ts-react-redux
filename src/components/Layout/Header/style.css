@@ -7,19 +7,10 @@
   line-height: 1.5;
 }
 .header .header-logo-wrp {
+  height: 120px;
   display: flex;
   justify-content: space-between;
-}
-.header .header-logo div > span:first-child {
-  font-size: 38px;
-  color: #3197ef;
-}
-.header .header-logo div > span:last-child {
-  font-size: 38px;
-  color: #eef4f9;
-}
-.header .header-logo span:last-child {
-  color: #eef4f9;
+  align-items: center;
 }
 .header .header-footer {
   height: 40px;
@@ -38,7 +29,25 @@
   font-size: 12px;
 }
 @media (max-width: 767px) {
+  .header .combined {
+    margin-left: -30px;
+    width: 250px;
+  }
+  .header .combined .title {
+    font-size: 20px;
+  }
+  .header .combined .combined-bar {
+    top: 30px;
+  }
+  .header .combined .content {
+    top: 35px;
+    width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .header .menu-button-wrp {
+    margin-top: -35px;
     display: flex;
   }
   .header .header-footer {
@@ -86,4 +95,64 @@
 }
 .menu-button-wrp {
   display: none;
+}
+.combined-wrapper {
+  padding: 0;
+  background: linear-gradient(135deg, #329fff 1%, #8c00ff 100%);
+  height: 300px;
+  position: relative;
+  width: 100%;
+}
+.combined-reload {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+.combined {
+  color: #fff;
+  width: 260px;
+  height: 100px;
+  position: relative;
+}
+.combined-shape {
+  position: relative;
+}
+.combined-shape > * {
+  width: 50%;
+  height: 64px;
+  position: absolute;
+  overflow: hidden;
+}
+.combined-shape > * > * {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.combined-shape .shape-left {
+  left: 0;
+}
+.combined-shape .shape-right {
+  right: 0;
+}
+.combined .title {
+  color: #3493ef;
+  font-size: 30px;
+  letter-spacing: 8px;
+  position: absolute;
+  width: 350px;
+  overflow: hidden;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.combined-bar {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 45px;
+}
+.combined .content {
+  font-size: 14px;
+  text-align: center;
+  position: absolute;
+  top: 52px;
 }

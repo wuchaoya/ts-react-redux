@@ -7190,6 +7190,14 @@ rc-tabs@~9.4.6:
     rc-util "^4.0.4"
     warning "^3.0.0"
 
+rc-texty@^0.2.0:
+  version "0.2.0"
+  resolved "http://registry.npm.taobao.org/rc-texty/download/rc-texty-0.2.0.tgz#79af813523bfc314ba74af2bc086cda8b3296458"
+  dependencies:
+    babel-runtime "6.x"
+    classnames "^2.2.6"
+    rc-tween-one "^2.2.0"
+
 rc-time-picker@~3.4.0:
   version "3.4.0"
   resolved "https://registry.npmjs.org/rc-time-picker/-/rc-time-picker-3.4.0.tgz#274e80122f885b37a4eace7393f3a25334fa141f"
@@ -7259,7 +7267,7 @@ rc-trigger@^3.0.0-rc.2:
     rc-animate "^3.0.0-rc.1"
     rc-util "^4.4.0"
 
-rc-tween-one@^2.2.8:
+rc-tween-one@^2.2.0, rc-tween-one@^2.2.14, rc-tween-one@^2.2.8:
   version "2.2.14"
   resolved "http://registry.npm.taobao.org/rc-tween-one/download/rc-tween-one-2.2.14.tgz#8e511cf38266cdccc2a31cfebebd8fdb5a1fc2c1"
   dependencies:
