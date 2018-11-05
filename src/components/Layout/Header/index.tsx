@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Layout, Row } from 'antd';
+import { Col, Dropdown, Icon, Layout, Menu, Row } from 'antd'
 import './style.less';
 
 const { Header } = Layout;
@@ -74,19 +74,50 @@ class Cover extends React.PureComponent<ICoverTitle> {
     return (
       <Header>
         <Row>
-          <Col lg={1} xl={3} xxl={5} />
+          <Col md={0} lg={1} xl={3} xxl={5} />
           <Col md={22} lg={20} xl={18} xxl={14}>
-            <div className="header-logo">
-              <div>
-                <span>{this.props.title[0]}</span>
-                <span>{this.props.title[1]}</span>
+            <div className="header-logo-wrp">
+              <div className="header-logo">
+                <div>
+                  <span>{this.props.title[0]}</span>
+                  <span>{this.props.title[1]}</span>
+                </div>
+                <span>{this.props.subTitle}</span>
               </div>
-              <span>{this.props.subTitle}</span>
+              <div className="menu-button-wrp">
+                <Dropdown overlay={<_Menu data={navList}/>} trigger={['click']}>
+                  <Icon type="bars" className="menu-button" />
+                </Dropdown>
+              </div>
             </div>
           </Col>
-          <Col span={6} />
         </Row>
       </Header>
     )
   }
+}
+
+
+
+class _Menu  extends React.PureComponent<INavData> {
+  
+  public render () {
+    return (
+      <Menu className="menu">
+        {this.props.data.map((item: any) => (
+          <Menu.Item key={item.title} className="header-title-item">
+            <Link to={item.link}>
+            <span
+              className="icon-font"
+              style={{ marginRight: 5 }}
+              dangerouslySetInnerHTML={item.icon}
+            />
+              {item.title}
+            </Link>
+          </Menu.Item>
+        ))}
+      </Menu>
+    )
+  }
+  
 }

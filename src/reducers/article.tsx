@@ -6,7 +6,7 @@ const article = (state: Array<any> = [], action: ArticleAction): object => {
     case constants.REQUEST_ARTICLE:
       return state;
     case constants.RECEIVE_ARTICLE:
-      return [...state, ...action.article];
+      return action.article;
     default:
       return state;
   }

@@ -1,6 +1,5 @@
 .article {
   transition: box-shadow 0.3s ease-in;
-  box-shadow: 0 0 5px #aaa;
   margin-bottom: 20px;
 }
 .article .ant-card-body {
