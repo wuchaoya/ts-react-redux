@@ -1,6 +1,14 @@
 .header {
   margin-bottom: 20px;
 }
+.header .search-input {
+  width: 200px;
+  border: none;
+  line-height: 40px;
+}
+.header .ant-input {
+  border: none;
+}
 .header .ant-layout-header {
   background: -webkit-gradient(linear, 0 0, 0 bottom, from(#484848), to(#5a5a5a));
   height: 120px;

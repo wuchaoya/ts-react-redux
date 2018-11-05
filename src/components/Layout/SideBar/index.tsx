@@ -109,7 +109,7 @@ export default class Sidebar extends React.PureComponent<IProps> {
               color={item.color}
               className="tag"
               onClick={this.fetchArticle.bind(this,item)}>
-              {item.title}
+              <Link to="/"> {item.title}</Link>
             </Tag>
           ))}
         </Card>

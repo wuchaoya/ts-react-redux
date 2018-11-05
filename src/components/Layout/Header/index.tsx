@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Dropdown, Icon, Layout, Menu, Row } from 'antd'
+import { Col, Dropdown, Icon, Input, Layout, Menu, Row } from 'antd'
 import Texty from 'rc-texty'
 
 import 'rc-texty/assets/index.css'
@@ -8,14 +8,24 @@ import TweenOne from 'rc-tween-one'
 import './style.less';
 
 const { Header } = Layout;
+const { Search } = Input
 
 export interface INavData {
+  data: any
+  fetchArticle: (payload: object) => void
+}
+
+export interface IMenu {
   data: any
 }
 
 export interface ICoverTitle {
   title: [string,string];
   subTitle: string
+}
+
+interface IProps {
+  fetchArticle: (payload: object) => void
 }
 
 const navList = [
@@ -65,13 +75,14 @@ const getSplit = (e: any) => {
   return c
 }
 
-export default class HeaderDom extends React.PureComponent {
-
+export default class HeaderDom extends React.PureComponent<IProps> {
+  
   render () {
+    console.log(this.props)
     return (
       <div className='header'>
         <Cover title={['码', '帝']} subTitle={'高产似母猪，辛勤如小三'}/>
-        <Nav data={navList}/>
+        <Nav fetchArticle={this.props.fetchArticle}  data={navList}/>
       </div>
     )
   }
@@ -83,25 +94,49 @@ class Nav extends  React.PureComponent<INavData> {
     super(props);
   }
   
+  public fetchArticle = (value:any) => {
+    this.props.fetchArticle({
+      pageIndex: 1,
+      pageSize: 10,
+      title: value
+    })
+  }
+  
   render () {
     return (
       <Row className="header-footer">
         <Col lg={1} xl={4} xxl={5} />
         <Col lg={22} xl={18} xxl={14}>
-          {this.props.data.map((item: any) => (
-            <div key={item.title} className="header-title-item">
-              <Link to={item.link}>
-                <span
-                  className="icon-font"
-                  style={{ marginRight: 5 }}
-                  dangerouslySetInnerHTML={item.icon}
-                />
-                {item.title}
-              </Link>
-            </div>
-          ))}
+          <Row>
+            <Col xs={24} sm={24} md={17} lg={17} xl={17} xxl={17}>
+              {this.props.data.map((item: any) => (
+                <div key={item.title} className="header-title-item">
+                  <Link to={item.link}>
+                    <span
+                      className="icon-font"
+                      style={{ marginRight: 5 }}
+                      dangerouslySetInnerHTML={item.icon}
+                    />
+                    {item.title}
+                  </Link>
+                </div>
+              ))}
+            </Col>
+            <Col
+              xs={24}
+              sm={0}
+              md={{ span: 6, offset: 1 }}
+              xl={{ span: 6, offset: 1 }}
+              xxl={{ span: 6, offset: 1 }}>
+              <Search
+                placeholder="输入搜索标题"
+                onSearch={this.fetchArticle}
+                className="search-input"
+              />
+            </Col>
+          </Row>
         </Col>
-        <Col span={4} />
+        <Col lg={1} xl={4} xxl={5} />
       </Row>
     )
   }
@@ -189,7 +224,7 @@ class Cover extends React.PureComponent<ICoverTitle> {
 
 
 
-class _Menu  extends React.PureComponent<INavData> {
+class _Menu  extends React.PureComponent<IMenu> {
   
   public render () {
     return (

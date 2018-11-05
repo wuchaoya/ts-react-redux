@@ -1,8 +1,9 @@
-import { REQUEST_INFO } from '../constants';
+import { REQUEST_INFO, REQUEST_ARTICLES } from '../constants';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { withRouter } from 'react-router-dom';
 import App from '../components/App/index';
+import { IPayload } from '../types'
 
 interface IInfo {
   info: object
@@ -12,7 +13,15 @@ const mapStateToProps = ({ info }: IInfo) => {
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
-  return { actions: dispatch({ type: REQUEST_INFO }) }
+  return {
+    actions: dispatch({ type: REQUEST_INFO }),
+    fetchArticle: (payload: IPayload) => {
+      dispatch({
+        payload,
+        type: REQUEST_ARTICLES
+      })
+    }
+  }
 }
 const AppMap: any = connect(
   mapStateToProps,

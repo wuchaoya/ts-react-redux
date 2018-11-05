@@ -24,11 +24,12 @@ export default class App extends React.PureComponent<IProps> {
 
   public render () {
     const { info, children, location, fetchArticle} = this.props
+    console.log(this.props.fetchArticle)
     const isResume = location.pathname === '/resume'
     return !isResume ? (
       <Layout>
         <BackTop />
-        <Header />
+        <Header fetchArticle={fetchArticle} />
         <Layout>
           <Content>
             <Row>
